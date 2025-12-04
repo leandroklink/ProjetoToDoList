@@ -1,0 +1,79 @@
+{% extends "to_do_lists/base.html" %}
+
+{% block content %}
+
+
+{%if user.is_authenticated%}
+
+<div class="row">
+
+    <form method="post" class="shadow p-3 mt-3 col-12 col-md-4">
+        {% csrf_token %}
+
+        {%if form.errors %}
+            {%for field, errors in form.errors.items %}
+                {%for error in errors%}
+                    <span class="text-danger">* {{error}}</span></br>
+                {%endfor%}
+            {%endfor%}
+        {%endif%}
+
+        <div class='mb-3'> <!--Margem 3-->
+            <label for='id_tarefa' class='form-label'>Tarefa</label>
+            {{form.tarefa}}
+
+        </div>
+
+        <button type='submit' class='form-control btn btn-primary'>Cadastrar</button>
+        
+    </form>
+
+
+    <div class="p-4 mt-3 col-12 col-md-8 ">
+
+        <div class='p-3 mt-3 col-12'>
+            <h2>Tarefas</h2>
+            {%if tarefas_nao_concluidas %}
+
+                {% for tarefa in tarefas_nao_concluidas %}
+                    <div class="input-group mb-3 col-12"> 
+                        <span class="input-group-text col-8" id="basic-addon1">{{tarefa.tarefa}}</span>
+                        <a class="btn btn-primary col-2" href="{% url 'concluir' id=tarefa.id %}">Concluir</a> <!--Apesar de ser o link com o bootstrap faz parecer um botao-->
+                        <a class="btn btn-danger col-2" href="{% url 'excluir' id=tarefa.id %}">Excluir</a>
+                    </div> 
+                {% endfor %}
+
+            {% else %}
+                <p>Não há tarefas cadastradas</P>
+            {% endif %}
+
+        </div>
+
+        <div class='p-3 mt-3 col-12'>
+            <h2>tarefas Concluídas</h2>
+            {%if tarefas_concluidas %}
+                {% for tarefa in tarefas_concluidas%}
+                <div class="input-group-text mb-3 col-8 text-bg-info p-3 rounded"> 
+                    <span class="col-10">{{tarefa.tarefa}}</span>
+                    <a class="btn btn-danger float-end" href="{% url 'excluir' id=tarefa.id %}">Excluir</a>
+                </div> 
+                {% endfor %}
+
+            {% else %}
+                <p>Não há tarefas concluídas</P>
+            {% endif %}
+
+        </div>
+    </div>
+
+
+
+
+</div>
+{% else %}
+    <a href="{% url 'register' %}"><p class="text-center mt-3">Clique aqui para se registrar e anotar suas tarefas!</p></a>
+
+
+{%endif%}
+
+{% endblock content %}

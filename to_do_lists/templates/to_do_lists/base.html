@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <title>To do List</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme='dark'>
+            <div class="container">
+                <a class="navbar-brand" href="{%url 'index' %}">To-Do-List</a> <!--sempre que quiser usar uma rota usa o index-->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'index' %}">Home</a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{%url 'reset_pass' %}">Alterar senha</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{%url 'logout_page' %}">Sair</a>
+                        </li>
+
+                    {%else%}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{%url 'register' %}">Registrar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{%url 'login_page' %}">Entrar</a>
+                        </li>
+                    {%endif%}
+                </ul>
+                </div>
+            </div>
+            </nav>
+    </header>
+        <div class='container'>
+            {% block content %}{% endblock %}  
+        </div>        
+
+    <scripts src="{% static "js/bootstrap.min.js" %} %}"></scripts>
+</body>
+</html>
+
+
+
+
