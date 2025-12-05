@@ -54,3 +54,6 @@ python manage.py createsuperuser
 
 # 7. Inicie o servidor de desenvolvimento
 python manage.py runserver
+
+
+<img width="1384" height="618" alt="ToDoList" src="https://github.com/user-attachments/assets/377b080a-6f5e-464a-a1b6-4e34146d0df5" />
