@@ -27,31 +27,31 @@ https://youtube.com/playlist?list=PLLVddSbilcunGg0IJ4zP05Z91yrEaIiQh&si=KRHI1fdy
 - Python instalado (versão compatível)  
 - `venv` (ou outro ambiente virtual)
 
-### Passos
+## Passos
 
-# 1. Clone este repositório
+###  1. Clone este repositório
 git clone https://github.com/seu-usuario/seu-repo.git
 cd seu-repo
 
-# 2. Crie um ambiente virtual
+##  2. Crie um ambiente virtual
 python -m venv venv
 
-# 3. Ative o ambiente virtual
-# No Windows:
+##  3. Ative o ambiente virtual
+##  No Windows:
 venv\Scripts\activate
-# No Linux / macOS:
+##  No Linux / macOS:
 source venv/bin/activate
 
-# 4. Instale as dependências
+##  4. Instale as dependências
 pip install -r requirements.txt
 
-# 5. Rode as migrações do banco de dados
+##  5. Rode as migrações do banco de dados
 python manage.py migrate
 
-# 6. (Opcional) Crie um superusuário/admin
+##  6. (Opcional) Crie um superusuário/admin
 python manage.py createsuperuser
 
-# 7. Inicie o servidor de desenvolvimento
+## 7. Inicie o servidor de desenvolvimento
 python manage.py runserver
 
 
