@@ -29,7 +29,6 @@ https://youtube.com/playlist?list=PLLVddSbilcunGg0IJ4zP05Z91yrEaIiQh&si=KRHI1fdy
 
 ### Passos
 
-```bash
 # 1. Clone este repositório
 git clone https://github.com/seu-usuario/seu-repo.git
 cd seu-repo
