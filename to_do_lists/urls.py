@@ -1,9 +1,16 @@
-
 from django.urls import path
-from . import views # o . serve pra mostrar ao django que é pra importar da própria pasta onde está o arquivo (da minha própria pasta, importe... )
+from .views import (
+    index,
+    concluir,
+    excluir,
+    TarefaListCreateAPIView
+)
 
 urlpatterns = [
-    path('', views.index, name='index'), #arquivo views, função index, e com a rota com nome de index aqui
-    path('concluir/<int:id>', views.concluir, name='concluir'),
-    path('excluir/<int:id>', views.excluir, name='excluir'),
+    path('', index, name='index'),
+    path('concluir/<int:id>/', concluir, name='concluir'),
+    path('excluir/<int:id>/', excluir, name='excluir'),
+
+    # API
+    path('api/tarefas/', TarefaListCreateAPIView.as_view(), name='api-tarefas'),
 ]
