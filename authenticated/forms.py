@@ -11,7 +11,7 @@ class LoginForm(forms.Form):
         }))
     password = forms.CharField(
         required=True,
-        widget=forms.TextInput(attrs={
+        widget=forms.PasswordInput(attrs={
 
             'id': 'id_login_password',
             'class':'form_control'
